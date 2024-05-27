@@ -70,8 +70,12 @@ info "publish ${PROJECT_FILE} for ${BUILD_CONFIGURATION} on ${OUTPUT_DIR}"
 dotnet publish $PROJECT_FILE --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} --self-contained --runtime linux-x64
 
 # List the contents of the output directory again after cleanup
-info "Listing contents of ${OUTPUT_DIR} after cleanup with sizes in MB"
+info "Listing contents of ${BUILD_DIR} after cleanup with sizes in MB"
 du -sh ${BUILD_DIR}/* | awk '{printf "%-10s %-s\n", $1, $2}'
+
+info "Listing contents of ${BUILD_DIR}/src after cleanup with sizes in MB"
+du -sh ${BUILD_DIR}/src/* | awk '{printf "%-10s %-s\n", $1, $2}'
+
 
 if [ -f ${BUILD_DIR}/Procfile ]; then
 	topic "WARNING"

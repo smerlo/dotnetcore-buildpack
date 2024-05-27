@@ -79,6 +79,10 @@ ls -al ${BUILD_DIR}/${OUTPUT_DIR}/runtimes
 
 rm -rf ${BUILD_DIR}/${OUTPUT_DIR}/runtimes/win
 
+# List the contents of the runtimes directory
+info "Listing contents of ${OUTPUT_DIR}"
+ls -al ${BUILD_DIR}/${OUTPUT_DIR}/runtimes
+
 if [ -f ${BUILD_DIR}/Procfile ]; then
 	topic "WARNING"
 	echo "Be careful with custom Procfile" | indent

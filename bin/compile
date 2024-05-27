@@ -77,7 +77,8 @@ ls -al ${BUILD_DIR}/${OUTPUT_DIR}
 info "Listing contents of ${OUTPUT_DIR}"
 ls -al ${BUILD_DIR}/${OUTPUT_DIR}/runtimes
 
-rm -rf ${BUILD_DIR}/${OUTPUT_DIR}/runtimes/win
+rm -rf ${BUILD_DIR}/${OUTPUT_DIR}/runtimes/win-x64
+rm -rf ${BUILD_DIR}/${OUTPUT_DIR}/runtimes/win-x86
 
 # List the contents of the runtimes directory
 info "Listing contents of ${OUTPUT_DIR}"

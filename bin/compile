@@ -71,7 +71,7 @@ dotnet publish $PROJECT_FILE --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration
 
 # List the contents of the output directory again after cleanup
 info "Listing contents of ${OUTPUT_DIR} after cleanup with sizes in MB"
-du -sh ${BUILD_DIR}/${OUTPUT_DIR}/* | awk '{printf "%-10s %-s\n", $1, $2}'
+du -sh ${BUILD_DIR}/* | awk '{printf "%-10s %-s\n", $1, $2}'
 
 if [ -f ${BUILD_DIR}/Procfile ]; then
 	topic "WARNING"

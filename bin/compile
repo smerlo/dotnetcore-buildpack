@@ -69,20 +69,9 @@ export NUGET_PACKAGES="${CACHE_DIR}/nuget/cache"
 info "publish ${PROJECT_FILE} for ${BUILD_CONFIGURATION} on ${OUTPUT_DIR}"
 dotnet publish $PROJECT_FILE --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} --self-contained --runtime linux-x64
 
-# List the contents of the output directory
-info "Listing contents of ${OUTPUT_DIR}"
-ls -al ${BUILD_DIR}/${OUTPUT_DIR}
-
-# List the contents of the runtimes directory
-info "Listing contents of ${OUTPUT_DIR}"
-ls -al ${BUILD_DIR}/${OUTPUT_DIR}/runtimes
-
-rm -rf ${BUILD_DIR}/${OUTPUT_DIR}/runtimes/win-x64
-rm -rf ${BUILD_DIR}/${OUTPUT_DIR}/runtimes/win-x86
-
-# List the contents of the runtimes directory
-info "Listing contents of ${OUTPUT_DIR}"
-ls -al ${BUILD_DIR}/${OUTPUT_DIR}/runtimes
+# List the contents of the output directory again after cleanup
+info "Listing contents of ${OUTPUT_DIR} after cleanup with sizes in MB"
+du -sh ${BUILD_DIR}/${OUTPUT_DIR}/* | awk '{printf "%-10s %-s\n", $1, $2}'
 
 if [ -f ${BUILD_DIR}/Procfile ]; then
 	topic "WARNING"

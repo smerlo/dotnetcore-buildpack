@@ -39,8 +39,6 @@ install_dotnet $BUILD_DIR $CACHE_DIR $DOTNET_SDK_VERSION $DOTNET_RUNTIME_VERSION
 
 export PATH="${BUILD_DIR}/.heroku/dotnet:${PATH}"
 
-info "Installing IronPdf.Linux package"
-dotnet add package IronPdf.Linux
 
 cd $BUILD_DIR
 

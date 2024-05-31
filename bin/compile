@@ -67,9 +67,6 @@ if [ -n "$(cat $PROJECT_FILE | grep 'netcoreapp2.0')" ]; then
 fi
 export NUGET_PACKAGES="${CACHE_DIR}/nuget/cache"
 
-info "publish ${PROJECT_FILE} for ${BUILD_CONFIGURATION} on ${OUTPUT_DIR}"
-dotnet publish $PROJECT_FILE --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} --self-contained --runtime linux-x64
-
 ### Copy Aptfile from API folder to root
 if [ -f "$BUILD_DIR/src/Ortho2Signature.API/Aptfile" ]; then
     cp "$BUILD_DIR/src/Ortho2Signature.API/Aptfile" "$BUILD_DIR/"
@@ -77,6 +74,10 @@ else
     echo "Aptfile not found in API directory"
     exit 1
 fi
+info "publish ${PROJECT_FILE} for ${BUILD_CONFIGURATION} on ${OUTPUT_DIR}"
+dotnet publish $PROJECT_FILE --output ${BUILD_DIR}/${OUTPUT_DIR} --configuration ${BUILD_CONFIGURATION} --self-contained --runtime linux-x64
+
+
 rm -rf ${BUILD_DIR}/src
 
 # List the contents of the output directory again after cleanup
